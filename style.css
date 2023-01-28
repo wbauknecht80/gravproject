@@ -9,10 +9,47 @@
 .input_info {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 
 .buttons {
     display: flex;
     flex-direction: column;
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.object_one, .object_two, .distance_info {
+    background-color: white;
+    border: 5px;
+    border-style: ridge;
+    margin: 10px;
+}
+
+.button {
+   height: auto;
+   width: auto;
+   border: none; 
+   margin: 5px;
+}
+
+.object_one_mass, .object_two_mass, .distance_info_screen {
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    border: 5px;
+    border-style: ridge;
+    color: white;
+    background-color: black;
+}
+
+.directions {
+    margin: 20px;
+    text-align: center;
+}
+
+.output_info_one, .output_info_two, .distance_info_output {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
 }
