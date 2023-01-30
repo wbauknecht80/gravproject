@@ -25,6 +25,7 @@ const calc_button = document.getElementById('calc_button');
 const mass_1_selection_screen = document.getElementById('mass_1_selection');
 const distance_selection_screen = document.getElementById('distance_selection');
 const mass_2_selection_screen = document.getElementById('mass_2_selection');
+const output_screen = document.getElementById('output_screen');
 
 /*declaring various measurements*/
 
@@ -55,7 +56,7 @@ document.querySelectorAll('.mass_1_button').forEach(item => {
     })
 })
 
-document.querySelectorAll('distance_button').forEach(item => {
+document.querySelectorAll('.distance_button').forEach(item => {
     item.addEventListener('click', event => {
         update_distance(item.textContent);
     })
@@ -67,40 +68,72 @@ document.querySelectorAll('.mass_2_button').forEach(item => {
     })
 })
 
+document.querySelectorAll('.calc_button').forEach(item => {
+    item.addEventListener('click', event => {
+        declareVars();
+    })
+})
+
 /*functions to update screen*/
 
 function update_mass_1(value) {
     if (value === 'The Average Human') {
-        alert(human_mass);
+        mass_1_selection_screen.textContent = human_mass;
     } else if (value === 'A 2015 Honda Accord Sport') {
-        alert(car_mass); 
+        mass_1_selection_screen.textContent = car_mass; 
     } else if (value === 'A Skyscraper') {
-        alert(building_mass);
+        mass_1_selection_screen.textContent = building_mass;
     } else if (value === 'Earth') {
-        alert(earth_mass);
+        mass_1_selection_screen.textContent = earth_mass;
     }
 }
 
 function update_distance(value) {
     if (value === 'One Millimeter') {
-        alert(mm_in_m);
+        distance_selection_screen.textContent = mm_in_m;
     } else if (value === 'One Meter') {
-        alert(m_in_m);
+        distance_selection_screen.textContent  = m_in_m;
     } else if (value === 'One AU (1.496e+11 Meters)') {
-        alert(au_in_m);
+        distance_selection_screen.textContent  = au_in_m;
     } else if (value === 'One light-year (9.461e+15 Meters)') {
-        alert(ly_in_m);
+        distance_selection_screen.textContent  = ly_in_m;
+    } else if (value === 'One Kilometer') {
+        distance_selection_screen.textContent = km_in_m;
     }
 }
 
 function update_mass_2(value) {
     if (value === 'The Average Human') {
-        alert(human_mass);
+        mass_2_selection_screen.textContent  = human_mass;
     } else if (value === 'A 2015 Honda Accord Sport') {
-        alert (car_mass); 
+        mass_2_selection_screen.textContent  = car_mass; 
     } else if (value === 'A Skyscraper') {
-        alert (building_mass);
+        mass_2_selection_screen.textContent  = building_mass;
     } else if (value === 'Earth') {
-        alert (earth_mass)
+        mass_2_selection_screen.textContent  = earth_mass;
     }
+}
+
+/*functiions to declare vars and then solve*/
+
+function declareVars() {
+    if (mass_1_selection_screen.childNodes.length !== 0 && distance_selection_screen.childNodes.length 
+        !== 0 && mass_2_selection_screen.childNodes.length !== 0) {
+            m1 = mass_1_selection_screen.textContent;
+            d = distance_selection_screen.textContent;
+            m2 = mass_2_selection_screen.textContent;
+            calculate(m1, d, m2);
+        } else {
+            return;
+        }
+}
+
+function calculate(m1, d, m2) {
+    let m1_as_int = Number(m1);
+    let d_as_int = Number(d);
+    let m2_as_int = Number(m2);
+    let numerator = (m1_as_int * m2_as_int);
+    let denominator = (d * d);
+    let result = grav_const * (numerator / denominator);
+    output_screen.textContent = result;
 }
