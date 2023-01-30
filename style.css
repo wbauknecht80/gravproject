@@ -24,12 +24,16 @@
     border: 5px;
     border-style: ridge;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.button {
+.mass_2_button, .mass_1_button, .distance_button {
    height: auto;
    width: auto;
-   border: none; 
+   border-color: black; 
    margin: 5px;
 }
 
@@ -80,4 +84,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.calc_button {
+    height: auto;
+    width: auto;
+    border-color: black; 
+    border-width: 5px;
+    margin: 5px;
+    width: 150px;
+    height: 75px;
+    font-size: x-large;
 }
